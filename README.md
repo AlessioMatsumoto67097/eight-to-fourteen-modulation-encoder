@@ -19,3 +19,10 @@ EFM is the run-length-limited code used on CDs and MiniDiscs. Mapping the 256 po
 ## The awkward edge
 
 This library encodes a single byte at a time and does NOT insert the 3-bit merging bits that real disc frames place between consecutive 14-bit words. That is the caller's job. The merging bits are chosen dynamically based on the run-length state at the boundary; including them here would require maintaining digital-sum state across calls, which is a different concern. If you need a full frame assembler, wrap this encoder and add the merging logic on top.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
