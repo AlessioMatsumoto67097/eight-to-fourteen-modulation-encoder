@@ -1,6 +1,6 @@
 {
   "name": "eight-to-fourteen-modulation-encoder",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Maps each byte value to its corresponding 14-bit EFM channel word for CD and MiniDisc encoding.",
   "type": "module",
   "main": "src/index.js",
